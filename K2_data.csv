@@ -1,0 +1,13 @@
+epsilon,ligand_monomer_count,row_type,sample_index,z_value
+5.0,1.0,sampled_point,,0.46848785877227783
+5.0,3.0,sampled_point,,0.475210964679718
+5.0,5.0,sampled_point,,0.47174620628356934
+10.0,1.0,sampled_point,,0.4702379107475281
+10.0,3.0,sampled_point,,0.5314663052558899
+10.0,5.0,sampled_point,,0.6547662019729614
+15.0,1.0,sampled_point,,0.7135083675384521
+15.0,3.0,sampled_point,,0.731902539730072
+15.0,5.0,sampled_point,,0.7245752811431885
+20.0,1.0,sampled_point,,0.7232603430747986
+20.0,3.0,sampled_point,,0.6314103007316589
+20.0,5.0,sampled_point,,0.6470208764076233

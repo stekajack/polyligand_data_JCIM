@@ -1,0 +1,30 @@
+Data analysis using pressomancy_toolbox
+- Repository path: https://github.com/stekajack/pressomancy-toolbox
+- Branch: wip_branch
+- Commit: 18d64fa48afbb7edd9b07e46db4d5554cc80e43c
+- Worktree status: clean
+- Kernels used: Lp_ligands_final.pdf -> lp_projection
+		stacking_fraction_final.pdf -> calculate_stacking_fraction
+		Rq_contour.pdf -> per_fil_gyr
+		k2_contour.pdf -> per_fil_gyr
+		melting_temp_final.pdf -> derived from Ree_h5 + segments_h5 
+Note that the Ree_h5 and segments_h5 kernels are not in pressomancy_toolbox and are provided separately in missing_kernels.py. They are however pressomancy_toolbox compliant and fit the same pipeline)
+
+Simulation script uses abstractions from the pressomancy library:
+- Repository path: https://github.com/stekajack/pressomancy
+- Branch: main
+- Commit: 2a375e239f606280bcc0e4fa6d54bcabec08c9c2
+- Worktree status: clean
+
+Simulations performed using ESPResSo / espressomd simulation package:
+- Repository path: https://github.com/espressomd/espresso
+- Tag: 4.2.2
+- Commit: 2ba17de6096933275abec0550981d9122e4e5f28
+- Worktree status: clean
+
+Simulation script can be run via a command like:
+$ESPRESSOMDPATH/build/pypresso simulation_script.py -no_obj 6120 -concentration 0.6 -no_per 25 -no_crowders 4080 -vdW 5 -vdW_ligand 10 -part_per_filament 15 -part_per_ligand 3 -path_data $PATH_TO_DATA_SAVE_LOCATION -MODE NEW -bonding_mode ftf
+
+The authors recommend using 16 mpi ranks.
+
+Running the provided simulation script, pressomancy saves data with all the contextual information in the .h5 format that is compatible with the analysis kernels in analysis toolbox. See pressomancy documentation for more details, samples for help. An example script how to launch any of the calculation kernels that produce the data for plots is provided in example_to_lauch_analysis.ipynb. This is a convenience to launch analysis in parallel.
