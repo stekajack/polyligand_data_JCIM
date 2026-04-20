@@ -3,11 +3,11 @@ Data analysis using pressomancy_toolbox
 - Branch: wip_branch
 - Commit: 18d64fa48afbb7edd9b07e46db4d5554cc80e43c
 - Worktree status: clean
-- Kernels used: Lp_ligands_final.pdf -> lp_projection
-		stacking_fraction_final.pdf -> calculate_stacking_fraction
-		Rq_contour.pdf -> per_fil_gyr
-		k2_contour.pdf -> per_fil_gyr
-		melting_temp_final.pdf -> derived from Ree_h5 + segments_h5 
+- Kernels used: local persistance length -> lp_projection
+		fraction of intercalated ligands -> calculate_stacking_fraction
+		Radius of gyration -> per_fil_gyr
+		Relative shape anisotropy -> per_fil_gyr
+		Melting temperature (Eq. 6) -> derived from Ree_h5 + segments_h5 
 Note that the Ree_h5 and segments_h5 kernels are not in pressomancy_toolbox and are provided separately in missing_kernels.py. They are however pressomancy_toolbox compliant and fit the same pipeline)
 
 Simulation script uses abstractions from the pressomancy library:
