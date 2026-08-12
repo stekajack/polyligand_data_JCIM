@@ -1,30 +1,46 @@
-Data analysis using pressomancy_toolbox
-- Repository path: https://github.com/stekajack/pressomancy-toolbox
-- Branch: wip_branch
-- Commit: 18d64fa48afbb7edd9b07e46db4d5554cc80e43c
-- Worktree status: clean
-- Kernels used: local persistance length -> lp_projection
-		fraction of intercalated ligands -> calculate_stacking_fraction
-		Radius of gyration -> per_fil_gyr
-		Relative shape anisotropy -> per_fil_gyr
-		Melting temperature (Eq. 6) -> derived from Ree_h5 + segments_h5 
-Note that the Ree_h5 and segments_h5 kernels are not in pressomancy_toolbox and are provided separately in missing_kernels.py. They are however pressomancy_toolbox compliant and fit the same pipeline)
+Software versions and provenance
+================================
 
-Simulation script uses abstractions from the pressomancy library:
-- Repository path: https://github.com/stekajack/pressomancy
+Analysis
+--------
+
+pressomancy-toolbox (pmtools)
+- Repository: https://github.com/stekajack/pressomancy-toolbox
+- Branch: main
+- Commit: a494039d1aa6e1e2c32a2cc0e32074bcb1955bfc
+- Kernels used:
+  - calculate_stacking_fraction
+  - per_fil_gyr
+  - lp_projection
+  - Ree_segments
+
+The ligand occupancy and multi-G4 bridging kernel,
+calculate_ligand_cooperativity, is defined directly in
+G4_polybraco_analysis.ipynb.
+
+Pressomancy analysis API
+- Repository: https://github.com/stekajack/pressomancy
+- Branch: main
+- Commit: 558e3c10562a40c5014e7f7702e8a710a0bc9bc7
+
+Simulation generation
+---------------------
+
+Pressomancy
+- Repository: https://github.com/stekajack/pressomancy
 - Branch: main
 - Commit: 2a375e239f606280bcc0e4fa6d54bcabec08c9c2
-- Worktree status: clean
 
-Simulations performed using ESPResSo / espressomd simulation package:
-- Repository path: https://github.com/espressomd/espresso
-- Tag: 4.2.2
+ESPResSo / espressomd
+- Repository: https://github.com/stekajack/espresso_patched
+- Version: 4.2.2 milestone/stable
 - Commit: 2ba17de6096933275abec0550981d9122e4e5f28
-- Worktree status: clean
 
-Simulation script can be run via a command like:
+Example simulation command
+--------------------------
+
 $ESPRESSOMDPATH/build/pypresso simulation_script.py -no_obj 6120 -concentration 0.6 -no_per 25 -no_crowders 4080 -vdW 5 -vdW_ligand 10 -part_per_filament 15 -part_per_ligand 3 -path_data $PATH_TO_DATA_SAVE_LOCATION -MODE NEW -bonding_mode ftf
 
-The authors recommend using 16 mpi ranks.
-
-Running the provided simulation script, pressomancy saves data with all the contextual information in the .h5 format that is compatible with the analysis kernels in analysis toolbox. See pressomancy documentation for more details, samples for help. An example script how to launch any of the calculation kernels that produce the data for plots is provided in example_to_lauch_analysis.ipynb. This is a convenience to launch analysis in parallel.
+The simulations were run using 16 MPI ranks. Pressomancy writes the particle,
+object-connectivity, and simulation-context data to HDF5 files consumed by the
+analysis notebook.
